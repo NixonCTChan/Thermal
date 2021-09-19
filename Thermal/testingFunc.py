@@ -73,8 +73,8 @@ def extract_data(location):
 
 #compute final score
 def compute_final_score(sensitivity, deltaDistribution, deltaFrame, outsideDistribution):
-    maxDeltaDistribution = -1
-    maxDeltaFrame = 0
+    maxDeltaDistribution = -1.0
+    maxDeltaFrame = 0.0
     totalSensitivity = (100-sensitivity)/100
 
     for i in range(len(deltaDistribution)):
@@ -84,13 +84,13 @@ def compute_final_score(sensitivity, deltaDistribution, deltaFrame, outsideDistr
     for i in range(len(deltaFrame)):
         if maxDeltaFrame<deltaFrame[i]:
             maxDeltaFrame = deltaFrame[i]
-    deltaAnomalous = 0
-    distributionAnomalous = 0
-    if maxDeltaFrame>10:
-        deltaAnomalous=(maxDeltaFrame-10)/10
+    deltaAnomalous = 0.0
+    distributionAnomalous = 0.0
+    if maxDeltaFrame>7:
+        deltaAnomalous=float((maxDeltaFrame-7)/7)
     if maxDeltaDistribution>(0.2*768):
         distributionAnomalous=(maxDeltaDistribution+outsideDistribution/10-(0.2*768))/(0.2*768)
-    totalScore = 10*deltaAnomalous+0.7*distributionAnomalous
+    totalScore = float(1000.0*deltaAnomalous+10.0*distributionAnomalous)
     print ("Total Score is :%s" %totalScore)
     if totalScore>totalSensitivity:
         return True
