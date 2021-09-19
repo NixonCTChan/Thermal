@@ -103,7 +103,7 @@ def print_save_anomalous(totalFrames,location):
     min = 100
     if not os.path.exists("Anomalous/%s" %location):
         os.mkdir("Anomalous/%s"%location)
-    imageFile = open("Anomalous/%s/%s.txt"%(location,datetime.time()),"w+")
+    imageFile = open("Anomalous/%s/%s.txt"%(location,datetime.datetime.now().time()),"w+")
     for i in range(768):
         if totalFrames[i] > max:
             max = totalFrames[i]
