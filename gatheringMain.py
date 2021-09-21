@@ -23,6 +23,8 @@ if os.path.exists("Calibration/%s" %location):
 while keyPress != "x":
     print("Press x to stop taking pictures, press any key to continue taking pictures.")
     keyPress = input()
+    if keyPress == 'x':
+        break
     gathering.take_and_save(mlx,location,name)
     name += 1
 

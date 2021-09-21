@@ -13,8 +13,7 @@ BASE_SENSITIVITY = 100
 def get_location_sensitivity():
     print("Please enter a location.")
     location = str(input())
-    print("Please enter a sensitivity as an integer between 0 and 100. (usually between 70 to 80 percent)")
-    sensitivity = int(input())
+    sensitivity = 100
     return location, sensitivity
 
 #compute distributions and data
@@ -103,7 +102,7 @@ def print_save_anomalous(totalFrames,location):
     min = 100
     if not os.path.exists("Anomalous/%s" %location):
         os.mkdir("Anomalous/%s"%location)
-    imageFile = open("Anomalous/%s/%s.txt"%(location,datetime.datetime.now().time()),"w+")
+    imageFile = open("Anomalous/%s/%s.txt"%(location,datetime.datetime.now().date()),"w+")
     for i in range(768):
         if totalFrames[i] > max:
             max = totalFrames[i]
